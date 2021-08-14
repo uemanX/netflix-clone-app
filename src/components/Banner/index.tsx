@@ -1,22 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../api/axios';
 import requests from '../../api/requests';
+import { IDiscoverTV, initialStateMovie } from '../../api/tmdb/type';
 import { trancate } from '../../utils';
 import './Banner.css';
-
-interface IDiscoverTV {
-  backdrop_path: string | null;
-  name: string;
-  original_name: string;
-  overview: string;
-}
-
-const initialStateMovie: IDiscoverTV = {
-  backdrop_path: null,
-  name: '',
-  original_name: '',
-  overview: '',
-};
 
 type Props = {};
 
@@ -35,8 +22,6 @@ const Banner = (props: Props) => {
     }
     fetchData();
   }, []);
-
-  console.log(movie);
 
   return (
     <header
