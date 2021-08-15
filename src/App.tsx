@@ -1,15 +1,28 @@
 import './app.css';
-import * as React from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from './hooks';
-import { counterSlice } from './features/counter/counterSlice';
 import HomeScreen from './components/HomeScreen';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import LoginScreen from './components/LoginScreen';
 
 type Props = {};
 
 const App = (props: Props) => {
+  const user = null;
+
   return (
     <div className='app'>
-      <HomeScreen />
+      <Router>
+        {!user ? (
+          <LoginScreen />
+        ) : (
+          <Switch>
+            <Route exact path='/'>
+              <HomeScreen />
+            </Route>
+          </Switch>
+        )}
+      </Router>
     </div>
   );
 };
