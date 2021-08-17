@@ -1,14 +1,12 @@
-
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { counterSlice, CounterState } from './features/counter/counterSlice';
-
+import userReducer, { UserState } from './features/user/userSlice';
 
 export type AppState = {
-  counter: CounterState
+  user: UserState;
 };
 
 const rootReducer = combineReducers<AppState>({
-  counter: counterSlice.reducer,
+  user: userReducer,
 });
 
 const store = configureStore({

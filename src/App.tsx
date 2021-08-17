@@ -5,11 +5,13 @@ import HomeScreen from './components/HomeScreen';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginScreen from './components/LoginScreen';
 import { auth } from './firebase';
+import { login, logout, selectUser } from './features/user/userSlice';
 
 type Props = {};
 
 const App = (props: Props) => {
-  const user = null;
+  const user = useAppSelector(selectUser);
+  const dispach = useAppDispatch();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -17,9 +19,16 @@ const App = (props: Props) => {
         // Logged in
         console.log('logged in............');
         console.log(userAuth);
+        dispach(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          }),
+        );
       } else {
         console.log('logged out............');
         // Logged out
+        dispach(logout);
       }
     });
 
