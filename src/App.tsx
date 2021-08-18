@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginScreen from './components/LoginScreen';
 import { auth } from './firebase';
 import { login, logout, selectUser } from './features/user/userSlice';
+import ProfileScreen from './components/ProfileScreen';
 
 type Props = {};
 
@@ -28,12 +29,12 @@ const App = (props: Props) => {
       } else {
         console.log('logged out............');
         // Logged out
-        dispach(logout);
+        dispach(logout());
       }
     });
 
     return unsubscribe;
-  }, []);
+  }, [dispach]);
 
   return (
     <div className='app'>
@@ -42,6 +43,9 @@ const App = (props: Props) => {
           <LoginScreen />
         ) : (
           <Switch>
+            <Route path='/profile'>
+              <ProfileScreen />
+            </Route>
             <Route exact path='/'>
               <HomeScreen />
             </Route>
