@@ -4,6 +4,7 @@ import Nav from '../Nav';
 import { useAppSelector } from '../../hooks';
 import { selectUser } from '../../features/user/userSlice';
 import { auth } from '../../firebase';
+import PlanScreen from '../PlanScreen';
 
 type Props = {};
 
@@ -24,6 +25,9 @@ const ProfileScreen = (props: Props) => {
             <h2>{user?.email}</h2>
             <div className='profileScreen__plans'>
               <h3>Plans</h3>
+
+              <PlanScreen />
+
               <button
                 onClick={() => auth.signOut()}
                 className='profileScreen__signOut'
