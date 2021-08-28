@@ -22,12 +22,6 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
-    // increment: (state) => {
-    //   return {
-    //     ...state,
-    //     // value: state.value + 1,
-    //   };
-    // },
   },
 });
 
