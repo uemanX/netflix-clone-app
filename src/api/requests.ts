@@ -1,5 +1,5 @@
 // Typically we would store in {process.env.API_KEY}
-const API_KEY = '';
+const API_KEY = process.env.TMDB_API;
 
 const requests = {
   fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,

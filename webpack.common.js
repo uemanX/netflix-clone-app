@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -23,4 +25,5 @@ module.exports = {
   // ES5(IE11等)向けの指定（webpack 5以上で必要）
   // target: ["web", "es5"],
   target: 'web',
+  plugins: [new Dotenv()],
 };
